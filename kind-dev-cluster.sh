@@ -1,6 +1,6 @@
 #!/bin/bash
 
-reg_port='5010'
+reg_port='5000'
 reg_name='kind-registry'
 WORKERS_NUM=${WORKERS_NUM:-0}
 
@@ -15,13 +15,13 @@ fi
 # Docker proxy for speedup load images from docker.io and quay
 echo "Start create docker.io proxy registry"
 k3d registry create docker-io-proxy  \
-  -p 5000 \
+  -p 5001 \
   --proxy-remote-url https://registry-1.docker.io  \
   -v $HOME/registry/proxy/docker.io:/var/lib/registry || true
 
 echo "Start create quay.io proxy registry"
 k3d registry create quay-proxy  \
-  -p 5001 \
+  -p 5002 \
   --proxy-remote-url https://quay.io  \
   -v $HOME/registry/proxy/quay.io:/var/lib/registry || true
 
