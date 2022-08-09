@@ -13,6 +13,8 @@ export WORKERS_NUM=0
 ```
 
 ## Requirements
+```
 Docker
 k3d
 kind
+```
