@@ -47,7 +47,6 @@ nodes:
     extraMounts:
       - containerPath: /var/lib/kubelet/config.json
         hostPath: ${HOME}/.docker/config.json
-  ${workers_yml}
 EOF
 
 # Create workers info
