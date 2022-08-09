@@ -37,6 +37,8 @@ containerdConfigPatches:
   - |-
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
       endpoint = ["http://kind-registry:5000"]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."${reg_name}:${reg_port}"]
+      endpoint = ["http://kind-registry:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
       endpoint = ["http://k3d-docker-io-proxy:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
