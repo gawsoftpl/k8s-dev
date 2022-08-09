@@ -7,6 +7,11 @@ Script will create dev Kubernetes environment for dev or tests via Kind
 3. Create cluster k8s
 
 ## How to run
+1. Add kind-registry to hosts table
+```sh
+echo "127.0.0.1       kind-registry" >> /etc/hosts
+```
+2. Run script
 ```sh
 export WORKERS_NUM=0
 ./kind-dev-cluster.sh
