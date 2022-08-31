@@ -1,5 +1,15 @@
 # Overview
 
+## 1. Create secrets for private repo for k8s
+```sh
+export NAMESPACE=default
+export DOCKER_PRIVATE_ENDPOINT=private.repo.com
+export DOCKER_PRIVATE_USERNAME=user
+export DOCKER_PRIVATE_PASSWORD=password
+./create-private-docker-secret.sh
+```
+
+## 2. Create kind cluster
 Script will create dev Kubernetes environment for dev or tests via Kind
 
 1. Create registry for multi node cluster
@@ -9,7 +19,7 @@ Script will create dev Kubernetes environment for dev or tests via Kind
 ## How to run
 1. Add kind-registry to hosts table
 ```sh
-echo "127.0.0.1       kind-registry" >> /etc/hosts
+echo "127.0.0.1       registry" >> /etc/hosts
 ```
 2. Run script
 ```sh
