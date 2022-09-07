@@ -3,6 +3,7 @@
 reg_port='5000'
 reg_name='registry'
 WORKERS_NUM=${WORKERS_NUM:-0}
+CLUSTER_NAME=${CLUSTER_NAME:-apiserver-dev}
 
 # Docker image registry for multi node cluster
 if [ "$(docker inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true)" != 'true' ]; then
@@ -30,7 +31,7 @@ k3d registry create quay-proxy  \
 cat << EOF > /tmp/kind.cluster.yml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: apiserver-dev
+name: $CLUSTER_NAME
 networking:
   podSubnet: "10.244.0.0/16"
 containerdConfigPatches:
