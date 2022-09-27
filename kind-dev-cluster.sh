@@ -72,6 +72,6 @@ EOF
 kind create cluster --config /tmp/kind.cluster.yml --wait 3m
 
 # Assign dockers with one network
-docker network connect "kind" "${reg_name}"
-docker network connect "kind" "k3d-docker-io-proxy"
-docker network connect "kind" "k3d-quay-proxy"
+docker network connect "kind" "${reg_name}" || true
+docker network connect "kind" "k3d-docker-io-proxy" || true
+docker network connect "kind" "k3d-quay-proxy" || true
