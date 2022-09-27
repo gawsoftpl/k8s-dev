@@ -36,6 +36,8 @@ networking:
   podSubnet: "10.244.0.0/16"
 containerdConfigPatches:
   - |-
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry:${reg_port}"]
+      endpoint = ["http://registry:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
       endpoint = ["http://registry:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."${reg_name}:${reg_port}"]
