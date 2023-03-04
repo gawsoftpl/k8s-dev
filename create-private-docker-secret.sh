@@ -2,7 +2,7 @@
 
 if [ ${#NAMESPACE} -eq 0 ];
 then
-read -p "Enter namespace: " NAMESPACE
+read -p "Enter namespace[default]: " NAMESPACE
 fi
 
 if [ ${#DOCKER_PRIVATE_ENDPOINT} -eq 0 ];
@@ -22,6 +22,6 @@ echo ""
 fi
 
 
-kubectl create secret docker-registry regcred --docker-server=$DOCKER_PRIVATE_ENDPOINT --docker-username=$DOCKER_PRIVATE_USERNAME --docker-password=$DOCKER_PRIVATE_PASSWORD
+kubectl create secret docker-registry regcred -n $NAMESPACE --docker-server=$DOCKER_PRIVATE_ENDPOINT --docker-username=$DOCKER_PRIVATE_USERNAME --docker-password=$DOCKER_PRIVATE_PASSWORD
 
 kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "regcred"}]}' -n ${NAMESPACE}
