@@ -52,6 +52,6 @@ stringData:
 
 kind: Secret
 metadata:
-  name: kaniko-config
+  name: kaniko-secret
 type: Opaque
 EOF
