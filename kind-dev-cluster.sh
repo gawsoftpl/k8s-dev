@@ -1,7 +1,7 @@
 #!/bin/bash
 
 reg_port='5000'
-reg_name='registry'
+reg_name='registry-local'
 WORKERS_NUM=${WORKERS_NUM:-0}
 CLUSTER_NAME=${CLUSTER_NAME:-apiserver-dev}
 
@@ -37,9 +37,9 @@ networking:
 containerdConfigPatches:
   - |-
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
-      endpoint = ["http://registry:5000"]
+      endpoint = ["http://${reg_name}:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."${reg_name}:${reg_port}"]
-      endpoint = ["http://registry:5000"]
+      endpoint = ["http://${reg_name}:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
       endpoint = ["http://k3d-docker-io-proxy:5000"]
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
