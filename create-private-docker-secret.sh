@@ -3,9 +3,10 @@
 if [ ${#NAMESPACE} -eq 0 ];
 then
 read -p "Enter namespace[default]: " NAMESPACE
-else
-NAMESPACE="default"
 fi
+
+NAMESPACE=${NAMESPACE:-default}
+
 
 if [ ${#REGISTRY_ENDPOINT} -eq 0 ];
 then
